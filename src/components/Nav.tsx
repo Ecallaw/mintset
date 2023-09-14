@@ -21,7 +21,7 @@ export default function Nav(){
             {Object.values(MenuReferences).map((item : string) => {
               return (
                 <Fragment key={item}>
-                  <li className="text-white mx-8 link link-underline link-underline-with link-underline-green"><a href={"#" + item}>{item}</a></li>
+                  <li className="text-black mx-8 link link-underline link-underline-with link-underline-green"><a href={"#" + item}>{item}</a></li>
                 </Fragment>
               )
             })}

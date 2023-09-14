@@ -9,7 +9,7 @@ export default function Section({
   })
 {
   return (
-    <section className={"text-4xl min-h-[calc(100vh)] max-h-[calc(100vh)] w-screen " + bg} id={anchor}>
+    <section className={"text-4xl min-h-[calc(100vh)] max-h-[calc(100vh)] w-full " + bg} id={anchor}>
       {children}
     </section>
   )

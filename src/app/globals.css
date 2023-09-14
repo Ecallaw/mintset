@@ -52,7 +52,6 @@ html {
 	background: linear-gradient(-45deg, #FFEE2B, #AECB45, #51AD32, #009377);
 	background-size: 600% 600%;
 	animation: gradient 5s ease infinite;
-	/* height: 100vh; */
 }
 
 .container{
@@ -61,7 +60,7 @@ html {
   
   .title{
     font-weight: 500;
-    font-size: 4rem;
+    font-size: 4vw;
     letter-spacing: -.14rem;
     line-height: 1;
   }
@@ -71,7 +70,7 @@ html {
     grid-column: 1/5;
     position: relative;
     z-index: 200;
-    padding-top: 3rem;
+    padding-top: 2vw;
   }
   
   .right{
@@ -85,14 +84,13 @@ html {
       background-position: center top;
       background-size: auto 100%;
       border-radius: .5rem;
-      transition: width 300ms;
+      transition: all 300ms;
       width: 33%;
       cursor: pointer;
       overflow: hidden;
 
       &:before{
         content: '';
-        /* background: (180deg, rgba(0,0,0,0.4990371148459384) 0%, rgba(0,0,0,0) 30%); */
         background: linear-gradient(180deg, rgba(0,0,0,0) 80%, rgba(0,0,0,0.639093137254902) 100%);
         inset: 0;
         position: absolute;
@@ -102,11 +100,14 @@ html {
       
       .vert {
         position: absolute;
-        bottom: 2rem;
-        left: .5rem;
+        width: 110px;
+        text-align: start;
+        bottom: 5rem;
+        right: 2.5rem;
         color: white;
         transform: rotate(-90deg);
-        font-size: 2rem;
+        transform-origin: top right;
+        font-size: 1.2rem;
         transition: opacity 200ms;
       }
     
@@ -116,9 +117,8 @@ html {
         justify-content: space-between;
         color: white;
         font-size: 1.4rem;
-        padding: 2rem;
+        padding: 1rem 2rem;
         position: absolute;
-        padding-bottom: 2rem;
         bottom: 0;
         width: 100%;
         opacity: 0;
@@ -130,7 +130,7 @@ html {
           align-items: center;
           
           strong {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: normal;
             line-height: 1;
           }
@@ -157,13 +157,10 @@ html {
   
 }
 
-.teammate:hover  {
-  width: 100%;
-}
-
 .one {
   background-image: url('../../public/public_assets_img_team_teamJ.jpg');
 }
+
 .two {
   background-image: url('../../public/public_assets_img_team_teamM2.jpg');
 }
@@ -173,23 +170,24 @@ html {
 
 .buttonWrapper{
   display: flex;
-  height: 6rem;
+  height: 5rem;
   z-index: 100;
   margin-bottom: 2rem;
   overflow: visible;
   white-space: nowrap;
   position: absolute;
-  bottom: 5rem;
+  bottom: 2rem;
   box-shadow: 3px 6px 14px 2px rgb(0 0 0 /20%);
   color: black;
   background: white;
-  width: 110%;
+  width: 108%;
 }
+
 .label {
   display: flex;
   font-size: 1.5rem;
   flex-grow: 1;
-  padding: 0 2rem;
+  padding: 0 2vw;
   align-items: center;
 }
 
@@ -228,7 +226,23 @@ html {
   }
 }
 
+.linear-wipe {
+  text-align: center;
+  background: linear-gradient(to left, #d7dd38 15%, #AECB45 30%,#AECB45 40%, #51AD32 50%, #009377 60%, #51AD32 70%, #AECB45 80%, #d7dd38 90% );
+  background-size: 200% auto;
+  
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
 
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
 
 
 

@@ -1,7 +1,9 @@
+import { MenuReferences } from "@/app/strings";
+
 export default function About(){
 
   return (
-    <div className="flex flex-col h-screen bg-red-200 px-24">
+    <div className="flex flex-col h-screen px-40">
       <div className='container h-full mt-28'>
         <div className="left">
           <h1 className="title text-black">
@@ -13,11 +15,11 @@ export default function About(){
             <div className="label">
             Contactez nous
             </div>
-            <button className="btn text-black">GO</button>
+            <button className="btn text-black"><a href={"#" + MenuReferences.CONTACT}>GO</a></button>
           </div>
         </div>
         <div className="right">
-          <div className="teammate one">
+          <div className="teammate one child">
             <div className="vert">Julien</div>
             <div className="horiz">
               <span className="name">Julien</span>
@@ -27,17 +29,17 @@ export default function About(){
               </div>
             </div>
           </div>
-          <div className="teammate two">
-            <div className="vert">Moh</div>
+          <div className="teammate two child">
+            <div className="vert">Mohammed</div>
             <div className="horiz">
-              <span className="name">Moh</span>
+              <span className="name">Mohammed</span>
               <div className="topics">
                 <strong>100</strong>
                 <span>TOPICS</span>
               </div>
             </div>
           </div>
-          <div className="teammate three">
+          <div className="teammate three child">
             <div className="vert">Erik</div>
             <div className="horiz">
               <span className="name">Erik</span>
@@ -52,12 +54,12 @@ export default function About(){
       
       </div>
       <div className="footer">
-        <h1 className="title">Force de proposition</h1>
+        <h1 className="title">Nous travaillons avec des technologies robustes</h1>
         <ul className="list">
-          <li>Centrer user</li>
-          <li>Frontend</li>
-          <li>Backend</li>
-          <li>Devops</li>
+          <li>React</li>
+          <li>Node</li>
+          <li>Next</li>
+          <li>Typescript</li>
         </ul>
       </div>
     </div>
