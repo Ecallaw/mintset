@@ -1,27 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-neutral-50: theme('colors.gray.50');
+  --color-neutral-100: theme('colors.gray.100');
+  --color-neutral-200: theme('colors.gray.200');
+  --color-neutral-300: theme('colors.gray.300');
+  --color-neutral-400: theme('colors.gray.400');
+  --color-neutral-500: theme('colors.gray.500');
+  --color-neutral-600: theme('colors.gray.600');
+  --color-neutral-700: theme('colors.gray.700');
+  --color-neutral-800: theme('colors.gray.800');
+  --color-neutral-900: theme('colors.gray.900');
+}  
+
+.theme-mintset {
+  --color-primary-50: theme('colors.mintset.50');
+  --color-primary-100: theme('colors.mintset.100');
+  --color-primary-200: theme('colors.mintset.200');
+  --color-primary-300: theme('colors.mintset.300');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.light {
+  --neutralBg: theme('colors.white');
+  --onNeutralBg: var(--color-neutral-900);
+  --surfaceBg: var(--color-neutral-200);
+  --primaryBg: var(--color-primary-100);
+  --onPrimaryBg: var(--color-primary-300);
+  --primary: var(--color-primary-200);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.dark {
+  --neutralBg: var(--color-neutral-900);
+  --onNeutralBg: theme('colors.white');
+  --surfaceBg: var(--color-neutral-700);
+  --primaryBg: var(--color-primary-300);
+  --onPrimaryBg: var(--color-primary-50);
+  --primary: var(--color-primary-200);
 }
