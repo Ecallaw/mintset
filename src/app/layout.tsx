@@ -1,8 +1,9 @@
-import Nav from '@/components/Nav'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { CONTENT_WEBSITE_LINKS } from '@/content/navContent'
+import ActiveSectionContextProvider from '@/context/active-section-context'
+import ColorModeContextProvider from '@/context/color-mode-context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='scroll-smooth'>
-      <body className={inter.className + ' theme-mintset bg-neutralBg text-onNeutralBg light'}>
-        {/* <Nav logoUrl={'/mintsetLogoBlack.svg'} logoDarkUrl={'/mintsetLogoWhite.svg'} links={CONTENT_WEBSITE_LINKS}/> */}
-        
-        {children}
+      <body className={inter.className + ' theme-mintset bg-neutralBg text-onNeutralBg'}>
+        <ColorModeContextProvider>
+          <ActiveSectionContextProvider>
+            {/* <Nav logoUrl={'/mintsetLogoBlack.svg'} logoDarkUrl={'/mintsetLogoWhite.svg'} links={CONTENT_WEBSITE_LINKS}/> */}
+            {children}
+          </ActiveSectionContextProvider>
+        </ColorModeContextProvider>
       </body>
     </html>
   )

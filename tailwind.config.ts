@@ -33,6 +33,8 @@ const config: Config = {
       },
       spacing: {
         'toolbarHeight': '84px',
+        'toolbarHeight-1': '126px',
+        'toolbarHeight-2': '168px',
       }
     },
    

@@ -1,23 +1,22 @@
 'use client'
 
-import useColorMode from '@/lib/hooks/useColorMode';
 import useOpenMenu from '@/lib/hooks/useOpenMenu';
-import { Links } from '@/lib/types';
+import { Links, SectionName } from '@/lib/types';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import {motion} from 'framer-motion'
-import { MdBrightness2, MdMenu, MdSunny } from 'react-icons/md';
+import { MdMenu } from 'react-icons/md';
+import { useActiveSectionContext } from '@/context/active-section-context';
+import DarkModeButton from '../ui/DarkModeButton';
 
 export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , logoDarkUrl = '/mintsetLogoWhite.svg', isTransparent=false } : {links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?:boolean}) {
-
+  const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
   const [openMenu, setOpenMenu] = useOpenMenu()
-  const [colorMode, setColorMode] = useColorMode()
-  const [activeSection, setActiveSection] = useState(links[0].name)
 
   return (
-    <div className={clsx('flex flex-1 fixed inset-0 h-toolbarHeight px-6 lg:px-8 xl:px-24 2xl:px-32',{'bg-neutralBg' : !isTransparent} )}>
+    <div className={clsx('flex flex-1 fixed inset-0 h-toolbarHeight px-6 lg:px-8 xl:px-24 2xl:px-32 z-[999] ',{'bg-neutralBg' : !isTransparent} )}>
       <div className='flex items-center text-lg text-onNeutralBg w-full'>
         <div className='w-fit rounded-full cursor-pointer p-2 bg-neutralBg' onClick={() => setOpenMenu(!openMenu)}>
           <MdMenu />
@@ -29,7 +28,7 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
       <div>
         <div className={(openMenu ? "left-0 " : "-left-[20rem] ") + " absolute w-[20rem] z-50 bg-neutralBg text-onNeutralBg h-screen px-6 transition-all duration-300"}>
           <div className="relative lg:flex-1">
-            <Link onClick={() => {setOpenMenu(!openMenu); setActiveSection(links[0].name)}} href={links[0].hash}>
+            <Link onClick={() => {setOpenMenu(!openMenu); setTimeOfLastClick(Date.now()); setActiveSection(links[0].name as SectionName  )}} href={links[0].hash}>
               <Image
                 className='cursor-pointer object-contain lg:max-h-20 lg:w-min dark:hidden'
                 src={logoUrl}
@@ -38,7 +37,7 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
                 height={40}
                 priority
                 style={{position: 'relative'}}
-                onClick={() => setActiveSection(links[0].name) }
+                onClick={() => {setTimeOfLastClick(Date.now());setActiveSection(links[0].name as SectionName)}}
               />
               <Image
                 className='hidden cursor-pointer object-contain lg:max-h-20 lg:w-min dark:block'
@@ -48,7 +47,7 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
                 height={40}
                 priority
                 style={{position: 'relative'}}
-                onClick={() => setActiveSection(links[0].name) }
+                onClick={() => {setTimeOfLastClick(Date.now()); setActiveSection(links[0].name as SectionName)} }
               />
             </Link>
           </div>
@@ -57,11 +56,11 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
               <ul className='flex flex-col mt-20'>
                 {links.map((link) => {
                   return (
-                    <Fragment key={link.hash} >
+                    <Fragment key={link.hash + '-mobile'} >
                       <li className='relative w-fit px-2 py-1 my-1 lg:mx-8'>
                         <Link className={clsx("hover:text-onNeutralBg", {
                           "text-onNeutralBg": activeSection === link.name, 
-                        })} onClick={() => {setOpenMenu(!openMenu);setActiveSection(link.name)}} href={link.hash}>{link.name}
+                        })} onClick={() => {setTimeOfLastClick(Date.now());setActiveSection(link.name as SectionName)}} href={link.hash}>{link.name}
                           {link.name === activeSection &&
                       <motion.span 
                         className='bg-surfaceBg rounded-md absolute inset-0 -z-10'
@@ -80,20 +79,7 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
               </ul>
             </nav>
             <div className="flex flex-1 text-xl items-end">
-              <svg width="0" height="0">
-                <linearGradient id="sun-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
-                  <stop stopColor="#fb923c" offset="0%" opacity={0.5}/>
-                  <stop stopColor="#ef4444" offset="100%" opacity={0.5}/>
-                </linearGradient>
-                <linearGradient id="moon-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
-                  <stop stopColor="#3b82f6" offset="0%" opacity={0.5}/>
-                  <stop stopColor="#8b5cf6" offset="100%" opacity={0.5}/>
-                </linearGradient>
-              </svg>
-              <button className="text-xl p-3 rounded-lg bg-surfaceBg " onClick={() => setColorMode(colorMode === 'light' ? 'dark' :'light')}>
-                {colorMode === 'dark' ? <MdSunny style={{ fill: "url(#sun-gradient)" }}/> : <MdBrightness2 style={{ fill: "url(#moon-gradient)" }}/>}
-              </button>
-
+              <DarkModeButton modifier={'mobile'}/>
             </div>
           </div>
         </div>
