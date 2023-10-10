@@ -12,13 +12,12 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-pattern': "url('/hero/BG_HERO_FULL.png')",
+        'footer-texture': "url('/footer/BG_FOOTER.jpg')",
       },
       colors: {
         onNeutralBg: 'var(--onNeutralBg)',
-        // onNeutralBg: 'rgb(var(--color-primary) / <alpha-value>)',
-
         neutralBg: 'var(--neutralBg)',
         surfaceBg: 'var(--surfaceBg)',
         onPrimaryBg: 'var(--onPrimaryBg)',
@@ -37,7 +36,6 @@ const config: Config = {
         'toolbarHeight-2': '168px',
       }
     },
-   
   },
   plugins: [],
 }

@@ -3,7 +3,7 @@ import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
 import { Links } from '@/lib/types'
 
-export default function ResponsiveNav({links, logoUrl ='/mintsetLogoBlack.svg' , logoDarkUrl = '/mintsetLogoWhite.svg', isTransparent=false} : {links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?:boolean}) {
+export default function ResponsiveNav({links, logoUrl ='/logo/LOGO_LIGHT.svg' , logoDarkUrl = '/logo/LOGO_DARK.svg', isTransparent=false} : {links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?:boolean}) {
   return (
     <>
       <div className='flex lg:hidden'>
@@ -12,7 +12,6 @@ export default function ResponsiveNav({links, logoUrl ='/mintsetLogoBlack.svg' ,
       <div className='hidden lg:block'>
         <DesktopNav links={links} logoUrl={logoUrl} logoDarkUrl={logoDarkUrl} isTransparent={isTransparent}/> 
       </div>
-      
     </>
   )
 }

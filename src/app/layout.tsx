@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { CONTENT_WEBSITE_LINKS } from '@/content/navContent'
 import ActiveSectionContextProvider from '@/context/active-section-context'
 import ColorModeContextProvider from '@/context/color-mode-context'
+import ResponsiveNav from '@/components/nav/ResponsiveNav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className + ' theme-mintset bg-neutralBg text-onNeutralBg'}>
         <ColorModeContextProvider>
           <ActiveSectionContextProvider>
-            {/* <Nav logoUrl={'/mintsetLogoBlack.svg'} logoDarkUrl={'/mintsetLogoWhite.svg'} links={CONTENT_WEBSITE_LINKS}/> */}
+            <ResponsiveNav links={CONTENT_WEBSITE_LINKS} isTransparent/>
             {children}
           </ActiveSectionContextProvider>
         </ColorModeContextProvider>

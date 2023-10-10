@@ -1,4 +1,5 @@
 'use client'
+
 import Color from '@/components/ds/Color'
 import Component from '@/components/ds/Component'
 import Home from '@/components/ds/Home'
@@ -12,7 +13,7 @@ export default function DesignSystem() {
   
 
   return (
-    <div className="theme-mintset flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col">
       <Home sectionName={CONTENT_DS_LINKS[0].name as SectionName} bg='bg-surfaceBg'/>
       <Color sectionName={CONTENT_DS_LINKS[1].name as SectionName} bg='bg-surfaceBg'/>
       <Typography sectionName={CONTENT_DS_LINKS[2].name as SectionName} bg='bg-surfaceBg'/>

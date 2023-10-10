@@ -11,7 +11,7 @@ import { MdMenu } from 'react-icons/md';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import DarkModeButton from '../ui/DarkModeButton';
 
-export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , logoDarkUrl = '/mintsetLogoWhite.svg', isTransparent=false } : {links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?:boolean}) {
+export default function MobileNav({links, logoUrl ='/logo/LOGO_DARK.svg' , logoDarkUrl = '/logo/LOGO_LIGHT.svg', isTransparent=false } : {links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?:boolean}) {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
   const [openMenu, setOpenMenu] = useOpenMenu()
 
@@ -27,26 +27,24 @@ export default function MobileNav({links, logoUrl ='/mintsetLogoBlack.svg' , log
       </div>
       <div>
         <div className={(openMenu ? "left-0 " : "-left-[20rem] ") + " absolute w-[20rem] z-50 bg-neutralBg text-onNeutralBg h-screen px-6 transition-all duration-300"}>
-          <div className="relative lg:flex-1">
+          <div className="relative flex-1 my-4">
             <Link onClick={() => {setOpenMenu(!openMenu); setTimeOfLastClick(Date.now()); setActiveSection(links[0].name as SectionName  )}} href={links[0].hash}>
               <Image
-                className='cursor-pointer object-contain lg:max-h-20 lg:w-min dark:hidden'
+                className='cursor-pointer object-contain h-[48px] w-max dark:hidden'
                 src={logoUrl}
-                alt="Logo"
+                alt="Logo-light"
                 width={120}
                 height={40}
                 priority
-                style={{position: 'relative'}}
                 onClick={() => {setTimeOfLastClick(Date.now());setActiveSection(links[0].name as SectionName)}}
               />
               <Image
-                className='hidden cursor-pointer object-contain lg:max-h-20 lg:w-min dark:block'
+                className='hidden cursor-pointer object-contain h-[48px] w-max dark:block'
                 src={logoDarkUrl}
-                alt="Logo"
+                alt="Logo-dark"
                 width={120}
                 height={40}
                 priority
-                style={{position: 'relative'}}
                 onClick={() => {setTimeOfLastClick(Date.now()); setActiveSection(links[0].name as SectionName)} }
               />
             </Link>

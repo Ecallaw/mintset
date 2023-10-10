@@ -10,7 +10,7 @@ import { useActiveSectionContext } from '@/context/active-section-context';
 
 import DarkModeButton from '../ui/DarkModeButton';
 
-export default function DesktopNav({ links, logoUrl = '/mintsetLogoBlack.svg', logoDarkUrl = '/mintsetLogoWhite.svg', isTransparent = false }: { links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?: boolean }) {
+export default function DesktopNav({ links, logoUrl ='/logo/LOGO_DARK.svg' , logoDarkUrl = '/logo/LOGO_LIGHT.svg', isTransparent = false }: { links: Links[], logoUrl?: string, logoDarkUrl?: string, isTransparent?: boolean }) {
   const { activeSection : currentActiveSection , setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
 
   // const currentActiveSection = "desktop-" + activeSection;
@@ -21,21 +21,21 @@ export default function DesktopNav({ links, logoUrl = '/mintsetLogoBlack.svg', l
         <div className="relative flex-1 ">
           <Link onClick={() => {setTimeOfLastClick(Date.now()); setActiveSection(links[0].name as SectionName);}} href={links[0].hash}>
             <Image
-              className={clsx('block cursor-pointer object-contain max-h-20 w-min dark:hidden mt-2', { 'hover:drop-shadow-xl': isTransparent })}
+              className={clsx('block cursor-pointer object-contain h-[48px] w-min dark:hidden', { 'hover:drop-shadow-xl': isTransparent })}
               src={logoUrl}
-              alt="Logo"
+              alt="Logo-light"
               width={120}
               height={40}
-              loading="lazy"
+              priority
               onClick={() => {setTimeOfLastClick(Date.now());setActiveSection(links[0].name as SectionName) }}
             />
             <Image
-              className={clsx('hidden cursor-pointer object-contain max-h-20 w-min dark:block drop-shadow-lg mt-2', { 'hover:drop-shadow-xl': isTransparent })}
+              className={clsx('hidden cursor-pointer object-contain h-[48px] w-min dark:block drop-shadow-lg', { 'hover:drop-shadow-xl': isTransparent })}
               src={logoDarkUrl}
-              alt="Logo"
+              alt="Logo-dark"
               width={120}
               height={40}
-              loading="lazy"
+              priority 
               onClick={() => {setTimeOfLastClick(Date.now());setActiveSection(links[0].name as SectionName)}}
             />
           </Link>

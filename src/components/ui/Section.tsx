@@ -1,7 +1,7 @@
 import { useSectionInView } from "@/lib/hooks/useSectionInView"
 import { SectionName } from "@/lib/types"
 
-export default function Section({ children, anchor, bg }: { children: React.ReactNode, anchor: string, bg?: string }){
+export default function Section({ children, anchor, bg='bg-neutralBg' }: { children: React.ReactNode, anchor: string, bg?: string }){
   const { ref } = useSectionInView(anchor as SectionName)
 
   return (

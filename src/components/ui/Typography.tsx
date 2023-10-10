@@ -27,13 +27,13 @@ export function H4(props: {className?: string, children: React.ReactNode}) {
 
 export function P1(props: {className?: string, children: React.ReactNode}) {
   return (
-    <p className={'text-base  md:text-lg lg:text-xl lg:max-w-[60%] xl:max-w-[40%] ' + props.className}>{props.children}</p>
+    <p className={'text-base  md:text-lg lg:text-xl lg:max-w-[60vw] xl:max-w-[40vw] ' + props.className}>{props.children}</p>
   )
 }
 
 export function P2(props: {className?: string, children: React.ReactNode}) {
   return (
-    <p className={'text-sm md:text-base lg:text-lg lg:max-w-[60%] xl:max-w-[40%] ' + props.className}>{props.children}</p>
+    <p className={'text-sm md:text-base lg:text-lg lg:max-w-[60vw] xl:max-w-[40vw] ' + props.className}>{props.children}</p>
   )
 }
 
