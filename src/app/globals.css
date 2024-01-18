@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -24,22 +25,170 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    /* background-image: url('/bg3.jpg');
+    background-position: center;  */
+
+    
+
+}
+
+.sectionTop{
+  display: flex;
+  justify-content: space-between;
+  align-items:center ;
+  width: 70vw;
 }
 
 
 .bash {
+  white-space: nowrap;
+  /* width: 34vw;  */
+  text-align: left;
+  background-color: black;
+  color: white;
+  font-size: medium ; 
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  width: 520px;
+  /* padding: 8px; */
+  /* border-radius: 0.75rem; */
+  display: -webkit-box;
+  /* padding-bottom: 120px; */
+  /* flex-direction: column; */
+  /* display: block; */
+}
+
+.bottom {
+  white-space: nowrap;
+  width: 80vw; 
+  text-align: left;
   background-color: black;
   color: white;
   font-size: medium ; 
   font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
   /* width: 80%; */
   padding: 8px;
-  /* display: inline-block; */
-  text-align: center;
   /* border-radius: 0.75rem; */
-
 }
+
+.contactButton {
+  margin-left: auto; 
+  margin-right: 0;
+}
+
 .companyNamePrompt{
   color: #51AD32;
+  width: 50px;
+  display:inline-block;
+}
 
+.cmdText{
+  display: -webkit-box;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 40px;
+  /* opacity: 0.8; */
+  /* background: linear-gradient(to bottom, white, rgba(255,0,0,0)); */
+
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+
+
+}
+.sloganContainer{
+  position: fixed;
+  right: 5vw;
+  bottom: 10%
+}
+.slogan {
+  font-family: var(--dancing_script);
+  font-size: x-large;
+  font-weight: bold;
+/* transform: rotate(90deg); */
+}
+
+
+.typing-demo {
+  width: 47ch;
+  animation: typing 2s steps(47), blink .50s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .15em solid orange; /* The typwriter cursor */
+  /* letter-spacing: .15em; */
+  margin-left: 4px;
+  
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.about_box {
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  /* background: #0099ae; */
+  /* overflow: hidden; */
+  background: white;
+  line-height: 10vw;
+
+}
+ 
+.about_big {
+  z-index: -4;
+  font-family: Arial;
+  font-size: 9vw;
+  color: rgba(132, 125, 125, 0.085);
+  overflow: hidden;
+  margin-left: 24px;
+  font-weight: bold;
+  padding: 0px;
+  letter-spacing: .1rem;
+}
+
+
+
+
+
+svg {
+	font-family: 'Russo One', sans-serif;
+	position: absolute; 
+	width: 100%; height: 100%;
+  z-index: -5;
+  opacity: 0.08;
+}
+svg text {
+	text-transform: uppercase;
+	animation: stroke 5s normal forwards;
+	stroke-width: 2;
+	stroke: grey;
+	font-size: 100px;
+  animation-delay: 1s;
+  visibility: hidden;
+}
+@keyframes stroke {
+	0%   {
+    visibility: visible;
+		fill: none; stroke: grey;
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 0;
+	}
+	70%  {fill: rgba(72,138,20,0); stroke: grey; }
+	80%  {fill: rgba(72,138,20,0); stroke: grey; stroke-width: 2; }
+	100% {
+		fill: grey; stroke: grey; 
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 2;
+    visibility: visible;
+	}
 }

@@ -1,108 +1,154 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import CommandPrompt from './components/CommandPrompt'
+import OnHover from './components/OnHover'
+import ChatBot from './components/Chatbot'
+import MatrixEffect from './components/MatrixEffect'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className=" left-0 top-0 flex w-full justify-center  bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-            <code className="font-mono font-bold">  Créateurs d&apos;expériences numériques exceptionnelles </code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className=" rounded-lg font-bold p-1 text-black bg-[#AECB45] radius  pointer-events-none flex place-items-center gap-2 p-2 lg:pointer-events-auto "
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nous contacter{' '}
-          </a>
-        </div>
+    <main className=" wrapper flex min-h-screen flex-col items-center justify-between ">
+      <div className="textrr about_box">
+        <svg viewBox="-10 200 1320 100">
+          <text x="10%" y="60%" textAnchor="middle">
+            Web
+          </text>
+        </svg>
+
+        <svg viewBox="-80 100 1320 100">
+
+          <text x="10%" y="60%" textAnchor="middle">
+            Design
+          </text>
+        </svg>
+        <svg viewBox="-190 -20 1320 100">
+          <text x="10%" y="60%" textAnchor="middle">
+            Full Stack
+          </text>
+        </svg>
+        <svg viewBox="-220 -130 1320 100">
+
+          <text x="10%" y="60%" textAnchor="middle">
+            Conception
+          </text>
+        </svg>
+        <svg viewBox="-340 -230 1320 100">
+          <text x="10%" y="60%" textAnchor="middle">
+            Developpement
+          </text>
+        </svg>
       </div>
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+
+      <div className=" sectionTop   ">
         <Image
-          className="invert-0 relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/MintsetLogoMonochrommeNoirFormatCarré.svg"
+          className="flex align-top"
+          src="/MintsetLogoMonochrommeNoir.svg"
           alt="Next.js Logo"
-          width={300}
-          height={200}
+          width={120}
+          height={100}
           priority
         />
 
-      </div>
-      <p className="bash rounded-b-lg border-y-8 border-t-[#AECB45]">
-         <a className="companyNamePrompt">mintset</a> :~$ Nous sommes les freelances que vous recherchez
-      </p>
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-
-
-        <Link
-          href="/expertises"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+        <a
+          className=" h-10 p-4 rounded-lg font-bold   border-2 border-[#51AD32] radius  pointer-events-none flex place-items-center gap-2  lg:pointer-events-auto "
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Nos expertises{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          Nous contacter{' '}
+        </a>
+      </div>
+
+
+      <div className=' flex flex-col items-center justify-around place-items-center'>
+        <div className="relative flex place-items-center ">
+          <Image
+            className="invert-0 relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+            src="/MintsetLogoFormatCarré.svg"
+            alt="Next.js Logo"
+            width={450}
+            height={250}
+            priority
+          />
+
+        </div>
+
+
+        <div className="bash p-2 m-8  border-t-8 border-t-[#51AD32] ">
+          <div className=" cmdText">
+            <div className=" itemPrompt companyNamePrompt">mintset</div> :~$
+            <div className="typing-demo">
+              Nous sommes les freelances que vous recherchez
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <div className='sloganContainer'>
+
+        <div className="flex flex-col  slogan text-center p-2">
+          <a>Innovation et fiabilité </a>
+          <a>pour des experience digitales uniques </a>
+        </div>
+      </div>
+
+      <div>
+        <div id="typedtext"></div>
+      </div>
+
+      <div className=" justify-between flex flex-row p-4 pb-8">
+
+        <a
+          href="/expertises"
+          className="group px-4 rounded-lg  transition-colors hover:border-green-300 hover:bg-green-100 hover:green:border-neutral-700 hover:dark:bg-neutral-800/30"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`font-semibold`}>
+            Expertises {' '}
+
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          La maîtrise des dernières technologies pour vous offrir des solutions innovantes et performantes
-          </p>
-        </Link>
+        </a>
 
         <a
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group px-4 rounded-lg  transition-colors hover:border-green-300 hover:bg-green-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-          Notre équipe {' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <h2 className={`font-semibold`}>
+            Services {' '}
+
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Des professionnels passionnés par le développement web
-          </p>
         </a>
 
         <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="group px-4 rounded-lg  transition-colors hover:border-green-300 hover:bg-green-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Nos clients{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <h2 className={`font-semibold`}>
+            L&apos;équipe {' '}
+
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-          Leur statisfaction est notre horizon
-         </p>
         </a>
 
         <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className="px-4 group rounded-lg  transition-colors hover:border-green-300 hover:bg-green-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            A propos{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+          <h2 className={`font-semibold`}>
+            A propos {' '}
+
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
         </a>
- 
+
+
+
       </div>
     </main>
   )
