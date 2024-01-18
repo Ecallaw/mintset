@@ -14,7 +14,6 @@ export default function Home() {
             Web
           </text>
         </svg>
-
         <svg viewBox="-80 100 1320 100">
 
           <text x="10%" y="60%" textAnchor="middle">
@@ -44,7 +43,7 @@ export default function Home() {
           className="flex align-top"
           src="/MintsetLogoMonochrommeNoir.svg"
           alt="Next.js Logo"
-          width={120}
+          width={150}
           height={100}
           priority
         />
@@ -59,7 +58,6 @@ export default function Home() {
         </a>
       </div>
 
-
       <div className=' flex flex-col items-center justify-around place-items-center'>
         <div className="relative flex place-items-center ">
           <Image
@@ -72,7 +70,6 @@ export default function Home() {
           />
 
         </div>
-
 
         <div className="bash p-2 m-8  border-t-8 border-t-[#51AD32] ">
           <div className=" cmdText">
@@ -146,9 +143,6 @@ export default function Home() {
 
           </h2>
         </a>
-
-
-
       </div>
     </main>
   )
