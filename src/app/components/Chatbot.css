@@ -20,7 +20,9 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
- 
+ .Chatbot{
+  border-radius: 8px;
+ }
 
 .ChatbotContainer{
   /* overflow: hidden; */
@@ -34,6 +36,7 @@ button:focus-visible {
 
   border-top-width: 8px!important;
   border-top-color: #51AD32!important;
+  border-radius: 8px!important;
 }
 
 .scrollbar-container {

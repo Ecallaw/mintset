@@ -5,13 +5,13 @@ import './Chatbot.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 
-const API_KEY = "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";
+const API_KEY = "";
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
   "role": "system", "content": `Tu es mintsetAi, le représentant de l'agence web mintset. 
   Tu es enthousiaste a l'idée de nous aider à avoir de nouveaux client. 
   Tu ne dois pas répondre aux questions qui ne concernent pas mintset plus de deux fois.
-Si une question ne concerne pas mintset : tu réponds a cette question et tu ajoutes de faire attention de parler de mintset. S'il continue avec une  question hors sujet tu ne répond plus.
+  Si une question ne concerne pas mintset : tu réponds a cette question très brièvement et tu ajoutes de faire attention de parler de mintset et si l'utilisateur pose plusieurs questions qui ne concernent pas mintset tu ne réponds plus.
   T'es réponse sont précises et brèves. Mintset est fondée en 2021 par Mohamed Naji, Julien Faucher et Erik Aouizerate, trois ingenieur developpeur. Nous sommes des freelances, nous pouvons travailler en consulting ou au projet.  
   Nos tarifs journalier :
   Mohamed : 500 euros
@@ -42,7 +42,7 @@ Intégration au pôle R&D d'ADP pour développer une nouvelle solution de gestio
 
   Mohamed est disponible à partir de mars. 
   `
-  
+
 }
 
 function Chatbot() {
@@ -62,8 +62,8 @@ function Chatbot() {
       sender: "user"
     };
 
-    const newMessages :any = [...messages, newMessage];
-    
+    const newMessages: any = [...messages, newMessage];
+
     setMessages(newMessages);
 
     // Initial system message to determine ChatGPT functionality
@@ -84,7 +84,7 @@ function Chatbot() {
       } else {
         role = "user";
       }
-      return { role: role, content: messageObject.message}
+      return { role: role, content: messageObject.message }
     });
 
 
@@ -99,74 +99,74 @@ function Chatbot() {
       ]
     }
 
-    await fetch("https://api.openai.com/v1/chat/completions", 
-    {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + API_KEY,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(apiRequestBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      console.log(data);
-      setMessages([...chatMessages, {
-        message: data.choices[0].message.content,
-        sender: "ChatGPT"
-      }]);
-      setIsTyping(false);
-    });
+    await fetch("https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + API_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(apiRequestBody)
+      }).then((data) => {
+        return data.json();
+      }).then((data) => {
+        console.log(data);
+        setMessages([...chatMessages, {
+          message: data.choices[0].message.content,
+          sender: "ChatGPT"
+        }]);
+        setIsTyping(false);
+      });
   }
 
   return (
-    <div className="ChatbotContainer">
-      <div className="ChatbotContainer" style={{ position:"relative", height: "400px", width: "900px"  }}>
+    <div className="Chatbot">
+      <div className="ChatbotContainer" style={{ position: "relative", height: "200px", width: "60vw" }}>
         <MainContainer className='ChatbotMain'>
-          <ChatContainer >       
-            <MessageList 
-              scrollBehavior="smooth" 
-             >
+          <ChatContainer >
+            <MessageList
+              scrollBehavior="smooth"
+            >
 
 
 
               {messages.map((message, i) => {
                 console.log(message)
-                  switch (message.sender) {
-                    case 'ChatGPT':
-                      return (
+                switch (message.sender) {
+                  case 'ChatGPT':
+                    return (
                       <div className='itemMessage'>
-                          <span className=" itemPrompt companyNamePrompt">MintsetAI</span> :~$  {message.message.toString()}
-                          <div className="typing-demo">
-                          
-                          </div>
-                    </div>)
-                    case 'user':
-                      return (
-                      <div className='itemMessage'>
-                            <span className=" itemPrompt companyNamePrompt">Vous</span> :~$  {message.message.toString()}
-                            <div className="typing-demo">
-                            
-                            </div>
-                      </div>)
-                  
-                    default:
-                      break;
-                  }
+                        <span className=" itemPrompt companyNamePrompt">MintsetAI</span> :~$  {message.message.toString()}
+                        <div className="typing-demo">
 
-                
-                
-                
+                        </div>
+                      </div>)
+                  case 'user':
+                    return (
+                      <div className='itemMessage'>
+                        <span className=" itemPrompt companyNamePrompt">Vous</span> :~$  {message.message.toString()}
+                        <div className="typing-demo">
+
+                        </div>
+                      </div>)
+
+                  default:
+                    break;
+                }
+
+
+
+
               })}
-            <MessageInput placeholder="> écrire ici" onSend={handleSend} />        
-            {isTyping ? <TypingIndicator className='typer' content="MintsetAI va répondre" /> : null}
-              </MessageList>
+              <MessageInput placeholder="> écrire ici" onSend={handleSend} />
+              {isTyping ? <TypingIndicator className='typer' content="MintsetAI va répondre" /> : null}
+            </MessageList>
 
 
           </ChatContainer>
         </MainContainer>
       </div>
-      </div>
+    </div>
   )
 }
 
