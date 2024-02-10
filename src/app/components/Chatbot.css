@@ -1,0 +1,74 @@
+ 
+
+ 
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #51AD32;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #51AD32;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+ 
+
+.ChatbotContainer{
+  /* overflow: hidden; */
+  border: none!important;
+
+}
+
+.ChatbotMain{
+  /* overflow: hidden!important; */
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace!important;
+
+  border-top-width: 8px!important;
+  border-top-color: #51AD32!important;
+}
+
+.scrollbar-container {
+  background-color: black;
+  color: white!important;
+}
+
+.cs-chat-container .cs-message-input {
+  background-color: black!important;
+  color: white!important;
+  border-top: none!important;
+
+}
+
+.cs-message-input__content-editor-wrapper {
+  background-color: black!important;
+  color: white!important;
+  
+}
+.cs-message-input__content-editor {
+  background-color: black!important;
+  color: white!important;
+}
+
+
+.cs-message-input__content-editor[data-placeholder]:empty:before {
+  background-color: black!important;
+  color: white!important;
+  opacity: 0.5;
+}
+
+.itemMessage{
+  margin-bottom: 8px;
+}
+.typer{
+background-color: black!important;
+position: relative!important;
+}

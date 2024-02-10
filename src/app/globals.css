@@ -41,7 +41,7 @@ body {
 
 
 .bash {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   /* width: 34vw;  */
   text-align: left;
   background-color: black;
@@ -78,11 +78,11 @@ body {
 .companyNamePrompt{
   color: #51AD32;
   width: 50px;
-  display:inline-block;
+  /* display:inline-block; */
 }
 
 .cmdText{
-  display: -webkit-box;
+  /* display: -webkit-box; */
 }
 
 canvas {
@@ -100,7 +100,7 @@ canvas {
 .sloganContainer{
   position: fixed;
   right: 5vw;
-  bottom: 10%
+  bottom: 40%
 }
 .slogan {
   font-family: var(--dancing_script);
@@ -118,7 +118,7 @@ canvas {
   border-right: .15em solid orange; /* The typwriter cursor */
   /* letter-spacing: .15em; */
   margin-left: 4px;
-  
+    
 }
 
 @keyframes typing {
@@ -141,8 +141,8 @@ canvas {
   top: 0px;
   /* background: #0099ae; */
   /* overflow: hidden; */
-  background: white;
-  line-height: 10vw;
+background: white;
+   line-height: 10vw;
 
 }
  

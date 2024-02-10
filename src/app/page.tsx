@@ -4,6 +4,7 @@ import CommandPrompt from './components/CommandPrompt'
 import OnHover from './components/OnHover'
 import ChatBot from './components/Chatbot'
 import MatrixEffect from './components/MatrixEffect'
+import Chatbot from './components/Chatbot'
 
 export default function Home() {
   return (
@@ -11,35 +12,35 @@ export default function Home() {
       <div className="textrr about_box">
         <svg viewBox="-10 200 1320 100">
           <text x="10%" y="60%" textAnchor="middle">
-            Web
+          Web
           </text>
         </svg>
-
+        
         <svg viewBox="-80 100 1320 100">
-
+          
           <text x="10%" y="60%" textAnchor="middle">
-            Design
+          Design  
           </text>
         </svg>
         <svg viewBox="-190 -20 1320 100">
           <text x="10%" y="60%" textAnchor="middle">
-            Full Stack
+          Full Stack
           </text>
         </svg>
         <svg viewBox="-220 -130 1320 100">
 
           <text x="10%" y="60%" textAnchor="middle">
-            Conception
+          Conception
           </text>
         </svg>
         <svg viewBox="-340 -230 1320 100">
           <text x="10%" y="60%" textAnchor="middle">
-            Developpement
+          Developpement
           </text>
         </svg>
       </div>
 
-      <div className=" sectionTop   ">
+            <div className=" sectionTop   ">
         <Image
           className="flex align-top"
           src="/MintsetLogoMonochrommeNoir.svg"
@@ -59,10 +60,10 @@ export default function Home() {
         </a>
       </div>
 
-
+ 
       <div className=' flex flex-col items-center justify-around place-items-center'>
         <div className="relative flex place-items-center ">
-          <Image
+<Image
             className="invert-0 relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
             src="/MintsetLogoFormatCarré.svg"
             alt="Next.js Logo"
@@ -72,26 +73,17 @@ export default function Home() {
           />
 
         </div>
+        
+
+        <Chatbot/>
 
 
-        <div className="bash p-2 m-8  border-t-8 border-t-[#51AD32] ">
-          <div className=" cmdText">
-            <div className=" itemPrompt companyNamePrompt">mintset</div> :~$
-            <div className="typing-demo">
-              Nous sommes les freelances que vous recherchez
-            </div>
-          </div>
-
-
-        </div>
-
-      </div>
+              </div>
       <div className='sloganContainer'>
-
-        <div className="flex flex-col  slogan text-center p-2">
+        {/* <div className="flex flex-col  slogan text-center p-2">
           <a>Innovation et fiabilité </a>
           <a>pour des experience digitales uniques </a>
-        </div>
+        </div> */}
       </div>
 
       <div>
@@ -146,9 +138,6 @@ export default function Home() {
 
           </h2>
         </a>
-
-
-
       </div>
     </main>
   )
