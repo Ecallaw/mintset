@@ -70,6 +70,7 @@ button:focus-visible {
 
 .itemMessage{
   margin-bottom: 8px;
+  -webkit-user-modify: read-write-plaintext-only;
 }
 .typer{
 background-color: black!important;

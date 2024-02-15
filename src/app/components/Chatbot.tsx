@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './Chatbot.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import emailjs from '@emailjs/browser';
 
 const API_KEY = "";
 // "Explain things like you would to a 10 year old learning how to code."
@@ -45,10 +46,17 @@ Intégration au pôle R&D d'ADP pour développer une nouvelle solution de gestio
 
 }
 
+
+emailjs.init({
+  publicKey: 'gZmykr_ckvgC0lr78',
+});
+
 function Chatbot() {
   const [messages, setMessages] = useState([
     {
-      message: "Bonjour ! :) Je suis un programme d'intelligence artificielle développé par l'agence web mintset. Je suis conçu pour répondre à vos questions et vous aider avec vos besoins en matière de développement web et de marketing en ligne. N'hésitez pas à me demander tout ce dont vous avez besoin !",
+      message: `Bonjour ! :) Je suis un programme d'intelligence artificielle développé par l'agence web mintset. 
+Je suis conçu pour répondre à vos questions et vous aider avec vos besoins en matière de développement web et voir comment Mintset peut y répondre.  
+N'hésitez pas à me demander toutes les informations dont vous avez besoin nous concernant ! Je peux aussi transmettre vos messages à freelances.`,
       sentTime: "just now",
       sender: "ChatGPT"
     }
@@ -56,6 +64,19 @@ function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
 
   const handleSend = async (message: any) => {
+
+
+
+
+
+
+
+
+
+
+
+    console.log('nouvau message ', message);
+
     const newMessage = {
       message,
       direction: 'outgoing',
@@ -63,65 +84,97 @@ function Chatbot() {
     };
 
     const newMessages: any = [...messages, newMessage];
-
     setMessages(newMessages);
+
+
+
 
     // Initial system message to determine ChatGPT functionality
     // How it responds, how it talks, etc.
     setIsTyping(true);
-    await processMessageToChatGPT(newMessages);
-  };
+    // await createMessage(newMessages);
 
-  async function processMessageToChatGPT(chatMessages: any[]) { // messages is an array of messages
-    // Format messages for chatGPT API
-    // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
-    // So we need to reformat
-
-    let apiMessages = chatMessages.map((messageObject: { sender: string; message: any; }) => {
-      let role = "";
-      if (messageObject.sender === "ChatGPT") {
-        role = "assistant";
-      } else {
-        role = "user";
-      }
-      return { role: role, content: messageObject.message }
-    });
-
-
-    // Get the request body set up with the model we plan to use
-    // and the messages which we formatted above. We add a system message in the front to'
-    // determine how we want chatGPT to act. 
-    const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        systemMessage,  // The system message DEFINES the logic of our chatGPT
-        ...apiMessages // The messages from our chat with ChatGPT
-      ]
-    }
-
-    await fetch("https://api.openai.com/v1/chat/completions",
-      {
-        method: "POST",
+    try {
+      const response = await fetch('/api/createMessage', {
+        method: 'POST',
         headers: {
-          "Authorization": "Bearer " + API_KEY,
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(apiRequestBody)
-      }).then((data) => {
-        return data.json();
-      }).then((data) => {
-        console.log(data);
-        setMessages([...chatMessages, {
-          message: data.choices[0].message.content,
+        body: JSON.stringify(newMessages),
+      })
+      const res = await response.json()
+
+      setIsTyping(false);
+
+
+      console.log('0000000000000000000user_email, user_message=================' );
+
+      const messageGPT =  res.data.content
+
+      if (messageGPT.includes('[validation_ok]') && messageGPT.includes('[[')) {
+        
+        const regex1 = /\[\[\[([\s\S]*?)\]\]\]/;
+
+        console.log('111111111==========================messageGPT.match(regex1)[0],  =================',messageGPT.match(regex1));
+
+        const user_message = messageGPT.match(regex1)[0];
+
+        console.log('111111111==========================user_message,  =================',user_message);
+
+        const regex = /\[\[(.*?)\]\]/;
+        const user_email = messageGPT.match(regex)[0];
+        console.log('111111111==========================user_email,  =================',user_email);
+
+  
+
+
+        console.log('222222222==========================user_email, user_message=================', { user_email, user_message });
+
+        const templateParams = {
+          user_name:    'MintsetAI',
+          user_message:   user_message.replaceAll('[[[', ' ').replaceAll(']]]', ' '),
+          user_email:user_email.replaceAll('[[', ' ').replaceAll(']]', ' '),
+        };
+
+        emailjs.send('service_ijjiqi6', 'template_m8oitcs', templateParams).then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          (error) => {
+            console.log('FAILED...', error);
+          },
+        );
+
+        setMessages([...newMessages, {
+          message: 'Je vous remercie. Le mail a bien été envoyé.',
           sender: "ChatGPT"
         }]);
-        setIsTyping(false);
-      });
-  }
+      }else{
+        setMessages([...newMessages, {
+          message: res.data.content,
+          sender: "ChatGPT"
+        }]);
+
+      }
+
+
+
+
+
+
+
+
+
+      console.log('messages', messages);
+    } catch (error) {
+    }
+  };
+
+
 
   return (
     <div className="Chatbot">
-      <div className="ChatbotContainer" style={{ position: "relative", height: "200px", width: "60vw" }}>
+      <div className="ChatbotContainer" style={{ position: "relative", height: "400px", width: "65vw" }}>
         <MainContainer className='ChatbotMain'>
           <ChatContainer >
             <MessageList
@@ -136,7 +189,7 @@ function Chatbot() {
                   case 'ChatGPT':
                     return (
                       <div className='itemMessage'>
-                        <span className=" itemPrompt companyNamePrompt">MintsetAI</span> :~$  {message.message.toString()}
+                        <span className=" itemPrompt companyNamePrompt">MintsetAI</span> :~$  {message.message}
                         <div className="typing-demo">
 
                         </div>
@@ -144,7 +197,7 @@ function Chatbot() {
                   case 'user':
                     return (
                       <div className='itemMessage'>
-                        <span className=" itemPrompt companyNamePrompt">Vous</span> :~$  {message.message.toString()}
+                        <span className=" itemPrompt companyNamePrompt">Vous</span> :~$  {message.message}
                         <div className="typing-demo">
 
                         </div>
